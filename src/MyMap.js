@@ -1,17 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+//import tt from '@tomtom-international/web-sdk-services'
+import tt from '@tomtom-international/web-sdk-maps';
 /*
 31.5,
 34.75
  */
 function MyMap(props) {
-    let lat=31.5;
-    let lng=34.75;
-    const API_KEY = "=AIzaSyAm0dN8LFvTqMpiWABlPizAKL-ESWtQkwo"
-    return (
-        <iframe  src={`https://goo.gl/maps/8mN1KtTdqx55xiCj9`}></iframe>
-      )
+  let lat = 31.5;
+  let lng = 34.75;
+  const API_KEY = "=bLbbqjTYrBaGF78U8HJboRc97VjfOa25-ESWtQkwo"
+  useEffect(() => {
+    const map = tt.map({
+      key: 'bLbbqjTYrBaGF78U8HJboRc97VjfOa25',
+      center: [lng, lat],
+      container: 'map',
+      zoom: 6,
+
+    });
+    // map.addControl(new tt.FullscreenControl());
+    map.addControl(new tt.NavigationControl());
+  }, [])
+
+  return (
+    <div>
+    
+      <div id="map"   className="map"></div>
+    </div>
+  )
 }
 
 export default MyMap
 
-//  <iframe name="gMap" src={`https://www.google.com/maps/embed/v1/place?q=${this.props.location.lat},${ this.props.location.lng}&key=${API_KEY}`}></iframe>

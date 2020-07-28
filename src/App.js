@@ -5,7 +5,7 @@ import MyMap from './MyMap';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
         react start!
         <MyMap/>
     </div>
