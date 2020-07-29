@@ -6,25 +6,23 @@ import tt from '@tomtom-international/web-sdk-maps';
 34.75
  */
 function MyMap(props) {
-  let lat = 31.5;
-  let lng = 34.75;
-  const API_KEY = "=bLbbqjTYrBaGF78U8HJboRc97VjfOa25-ESWtQkwo"
+
   useEffect(() => {
+    document.getElementById("map").innerHTML=<div id="map" className="map"></div>
     const map = tt.map({
       key: 'bLbbqjTYrBaGF78U8HJboRc97VjfOa25',
-      center: [lng, lat],
+      center: [props.lng, props.lat],
       container: 'map',
-      zoom: 6,
-
+      zoom: 5,
     });
     // map.addControl(new tt.FullscreenControl());
-    map.addControl(new tt.NavigationControl());
-  }, [])
+    // map.addControl(new tt.NavigationControl());
+  }, [ props.lat])
 
   return (
-    <div>
-    
-      <div id="map"   className="map"></div>
+    <div className=" mainMap " id="main">
+
+      <div id="map" className="map"></div>
     </div>
   )
 }
