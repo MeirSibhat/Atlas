@@ -10,6 +10,7 @@ function Main() {
                 <Route  path="/" component={Header} />
                 <Route  path="/" component={Nav} />
                 <Route exact path="/" component={ResCountry} />
+                <Route exact path="/country" component={ResCountry} />
                 <Route exact path="/country/:name" component={ResCountry} />
                 <Route exact path="/code/:codeId" component={ResCountry} />
                 {/* <Switch> */}

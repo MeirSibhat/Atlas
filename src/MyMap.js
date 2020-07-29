@@ -9,9 +9,10 @@ function MyMap(props) {
 
   useEffect(() => {
     document.getElementById("map").innerHTML=<div id="map" className="map"></div>
+    var myCenter = [props.lng, props.lat];
     const map = tt.map({
       key: 'bLbbqjTYrBaGF78U8HJboRc97VjfOa25',
-      center: [props.lng, props.lat],
+      center: myCenter,
       container: 'map',
       zoom: 5,
     });

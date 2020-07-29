@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { doApiGet } from '../servecis/apiServer';
+import { doApiGet ,theCountryName} from '../servecis/apiServer';
 import MyMap from '../MyMap';
 import { Link } from "react-router-dom"
 
@@ -16,30 +16,38 @@ function ResCountry(props) {
                 url = "https://restcountries.eu/rest/v2/name/" + props.match.params.name
             }
             if (props.match.params.codeId) {
-                console.log("code")
+              //  console.log("code")
                 url = "https://restcountries.eu/rest/v2/alpha/" + props.match.params.codeId
             }
         }
         doApiGet(url)
             .then(data => {
-                console.log(data);
+               console.log(data);
+               debugger
                 if( props.match.params.codeId){
                     setCountry(data)
                 }else
                 setCountry(data[0])
             })
     }, [props.match])
+
+    const  noResult=()=>{
+        return <div className="countryouNoResult">
+            No results <br/>
+            Try searching for another country  <br/>
+            or click on a country in the selection
+        </div>
+    }
     return (
         <div>
-            countrrey page
-            <br />
-            <br />
+  
+            {Country?" ":noResult()}
             {Country && <div>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 countryFlag">
                             {/* {Country.flag} */}
-                            <img src={Country.flag} />
+                            <img src={Country.flag} alt="flg" />
                         </div>
                         <div className="col-lg-6  countryInfo">
                             <br />
@@ -51,7 +59,7 @@ function ResCountry(props) {
                             <div></div>
                         </div>
                     </div>
-                    <br />
+                    {/* <br /> */}
                     <div className="row">
                         <div className="col-lg-6 countryMap">
                             <MyMap lat={Country.latlng[0]} lng={Country.latlng[1]} />
@@ -61,8 +69,8 @@ function ResCountry(props) {
                             Borders Country:
                             <br />
                              {Country.borders.map((item,index)=>{
-                                 return<div>
-                                    <Link to={`/code/${item}`}>{item}</Link> <br />
+                                 return<div key={item}>
+                                    <Link to={`/code/${item}`}>{theCountryName(item)}</Link> <br />
                                  </div>
                              })}
             
