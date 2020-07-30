@@ -10,7 +10,6 @@ function ResCountry(props) {
     // history.push("/country")
     useEffect(() => {
         let url = "https://restcountries.eu/rest/v2/name/israel"
-
         if (props.match) {
             if (props.match.params.name) {
                 url = "https://restcountries.eu/rest/v2/name/" + props.match.params.name
@@ -23,7 +22,6 @@ function ResCountry(props) {
         doApiGet(url)
             .then(data => {
                console.log(data);
-               debugger
                 if( props.match.params.codeId){
                     setCountry(data)
                 }else
@@ -39,7 +37,7 @@ function ResCountry(props) {
         </div>
     }
     return (
-        <div>
+        <div className="mainRes">
   
             {Country?" ":noResult()}
             {Country && <div>
@@ -83,6 +81,7 @@ function ResCountry(props) {
 
             </div>
             }
+            <br />
         </div>
     )
 }

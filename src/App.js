@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import AppCountry from './coms/appCountry';
+import AppCountry from './comsAtlas/appCountry';
 
 function App() {
   return (
